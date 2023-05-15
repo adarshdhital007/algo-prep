@@ -26,4 +26,22 @@ template<class T> bool umax(T& a, const T& b) {
 	return a<b?a=b, 1:0;
 }
 
+mt19937 mt_rng(chrono::steady_clock::now().time_since_epoch().count());
+ll randint(ll a, ll b) {
+    return uniform_int_distribution<ll>(a, b)(mt_rng);
+}
+     
+void solve() {
+    
+}
 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
