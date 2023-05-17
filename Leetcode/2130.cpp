@@ -48,6 +48,7 @@ public:
             head = head->next;
         }
         int n = demo.size();
+        //just doing the loop till n/2 as given 
         F_OR3(i,0,n/2) {
             sum = max(sum, demo[i] + demo[n - 1 - i]);
         }
