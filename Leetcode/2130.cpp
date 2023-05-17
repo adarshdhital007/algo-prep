@@ -78,3 +78,51 @@ int main() {
     solve();
     return 0;
 }
+
+
+//Using stack
+
+ /*
+Create a ListNode pointer current and initialize it to head.
+Initialize an integer stack st to store the node values in the linked list.
+Iterate while current is not null:
+      -->Push current->val into st.
+      -->Update current to current->next.
+Set current back to head to iterate the list again from the start.
+Initialize size as st.size() and count as 1 to count the number of twin pairs.
+Create an integer variable maximumSum and initialize it to 0 to track the maximum sum of a node and its twin.
+While count is less than or equal to size/2:
+    -->Update maximumSum if the current twin sum is greater than the previous one:
+     maximumSum = max(maximumSum, current->val + st.top()).
+    -->Update current to current->next.
+    -->Pop the top element from the stack st.
+    -->Increment count by 1.
+Return maximumSum.
+*/
+
+ /*
+class Solution {
+public:
+    int pairSum(ListNode* head) {
+        ListNode* current = head;
+        stack<int> st;
+
+        while (current) {
+            st.push(current->val);
+            current = current->next;
+        }
+
+        current = head;
+        int size = st.size(), count = 1;
+        int maximumSum = 0;
+        while (count <= size / 2) {
+            maximumSum = max(maximumSum, current->val + st.top());
+            current = current->next;
+            st.pop();
+            count++;
+        }
+
+        return maximumSum;
+    }
+};
+*/
