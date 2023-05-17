@@ -1,6 +1,6 @@
- /*
-Reversing Linked List 
-*/
+ 
+//Reversing Linked List 
+
 #include<bits/stdc++.h>
 using namespace std;
 //template(adarshdhital007)
