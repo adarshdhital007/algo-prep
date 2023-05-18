@@ -41,9 +41,8 @@ public:
             hasincomingedge[edge[1]]=true;
         }
        vector<int>requirednodes;
-        for(int i=0;i<n;i++){
+        F_OR3(i,0,n){
             //storing all nodes that doesn't have incoming edges
-
             if(!hasincomingedge[i]){
                 requirednodes.push_back(i);
             }
