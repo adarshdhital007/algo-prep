@@ -19,11 +19,11 @@ using namespace std;
 #define EACH(x, a) for (auto& x: a)
 
 template<class T> bool umin(T& a, const T& b) {
-	return b<a?a=b, 1:0;
+return b<a?a=b, 1:0;
 }
 
 template<class T> bool umax(T& a, const T& b) { 
-	return a<b?a=b, 1:0;
+return a<b?a=b, 1:0;
 }
 
 mt19937 mt_rng(chrono::steady_clock::now().time_since_epoch().count());
