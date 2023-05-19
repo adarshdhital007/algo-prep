@@ -158,7 +158,7 @@ public:
 void solve()
 {
 Solution solution;
-vt<vt<int>>graph={{1,2,3},{0,2},{0,1,3},{0,2}};
+vt<vt<int>>graph={{1,2,3},{0,2},{0,1,3},{0,2}}; // Bipartite Graph : {{1,3},{0,2},{1,3},{0,2}}
 bool isBipartite = solution.isBipartite(graph);
     if(isBipartite)
     wr("Bipartite");
