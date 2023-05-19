@@ -156,7 +156,17 @@ vt<int>topologicalsort(vt<vt<int>>&graph,int numVertices){
      reverse(result.begin(),result.end());
      return result;
 }
-//Sample I/O:
+/*
+Sample I/O:
+5 6
+1 2
+1 3
+2 3
+2 4
+3 4
+3 5
+Topological Sort : 1 2 3 5 4
+*/
 void solve(){
     int numVertices,numEdges;
     rd(numVertices);
