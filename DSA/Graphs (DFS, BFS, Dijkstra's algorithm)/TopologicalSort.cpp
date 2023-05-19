@@ -125,11 +125,60 @@ template<class H, class... T> void print(const H& h, const T&... t) {
 const int d4i[4]={-1, 0, 1, 0}, d4j[4]={0, 1, 0, -1};
 const int d8i[8]={-1, -1, 0, 1, 1, 1, 0, -1}, d8j[8]={0, 1, 1, 1, 0, -1, -1, -1}; 
 
-void solve(){
+void dfs(vt<vt<int>>&graph,int vertex,vt<bool>&visited,stack<int>&st){
+    visited[vertex]=true;
 
+    //visiting all adjacent vertices
+    F_OR1(graph[vertex].size()){
+        int adjacentVertex=graph[vertex][i];
+        if(!visited[adjacentVertex]){
+            dfs(graph,adjacentVertex,visited,st);
+        }
+    }
+    st.push(vertex);
+}
+vt<int>topologicalsort(vt<vt<int>>&graph,int numVertices){
+    vt<bool>visited(numVertices,false);
+    stack<int>st;
+
+    //performing dfs on each unvisited vertex
+    F_OR1(numVertices){
+        if(!visited[i]){
+            dfs(graph,i,visited,st);
+        }
+    }
+     //making topological ordering
+     vt<int>result;
+     while(!st.empty()){
+        result.pb(st.top());
+        st.pop();
+     }
+     reverse(result.begin(),result.end());
+     return result;
+}
+//Sample I/O:
+void solve(){
+    int numVertices,numEdges;
+    rd(numVertices);
+    rd(numEdges);
+
+    vt<vt<int>>graph(numVertices);
+
+    F_OR1(numEdges){
+        int source, destination;
+        rd(source,destination);
+        graph[source-1].pb(destination-1);
+    }
+    vt<int>result=topologicalsort(graph,numVertices);
+    wr("Topological Sort : ");
+    F_OR1(result.size()){
+       wr(result[result.size() - i - 1] + 1);
+		wr(" ");
+    }
 }
   
 int main(){
     solve();
     return 0;
 }
+
