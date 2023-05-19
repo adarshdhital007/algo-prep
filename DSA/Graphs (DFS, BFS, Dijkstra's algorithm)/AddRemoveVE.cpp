@@ -143,9 +143,9 @@ class Graph{
      void addEdge(int source, int destination) {
         if (adjList.find(source) != adjList.end() && adjList.find(destination) != adjList.end()) {
             adjList[source].push_back(destination);
-            cout << "Edge from " << source << " to " << destination << " added." << endl;
+            print("Edge from ",source," to " ,destination," added.");
         } else {
-            cout << "One or both vertices do not exist. Cannot add edge." << endl;
+            print("One or both vertices do not exist. Cannot add edge.");
         }
     }
     void removeVertex(int vertex){
@@ -164,11 +164,12 @@ void displayGraph() {
             const list<int>& neighbors = pair.second;
             cout << "Vertex " << vertex << " -> ";
             for (int neighbor : neighbors) {
-                cout << neighbor << " ";
+                wr(neighbor);
+                wr("");
             }
-            cout << endl;
+           print("");
         }
-        cout << endl;
+       print("");
     }
 };
 void solve(){
