@@ -179,7 +179,7 @@ class LinkedList {
         newNode->data=value;
 
         Node* current=head;
-        for(int i=1;i<position-1 && current!=NULL;i++){
+            for(int i=1;i<position-1 && current!=NULL;i++){
             current=current->next;
         }
         
