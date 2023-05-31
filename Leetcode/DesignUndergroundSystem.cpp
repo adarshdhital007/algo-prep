@@ -169,7 +169,6 @@ public:
 int main() {
     UndergroundSystem* obj = new UndergroundSystem();
     
-    // Example usage
     obj->checkIn(1, "A", 10);
     obj->checkOut(1, "B", 20);
     double avgTime = obj->getAverageTime("A", "B");
