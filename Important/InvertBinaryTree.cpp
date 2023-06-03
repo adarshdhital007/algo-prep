@@ -172,7 +172,7 @@ int main(){
 	//print original tree
 	wr("Original Tree : ");
 	printinorder(root);
-	//print("");
+	print("");
 
 	//invert the tree
 	root=invertTree(root);
@@ -180,7 +180,7 @@ int main(){
 	//print the inverted tree
 	wr("Inverted Tree : ");
 	printinorder(root);
-	//print(" ");
+	print(" ");
 	return 0;
 }
 
