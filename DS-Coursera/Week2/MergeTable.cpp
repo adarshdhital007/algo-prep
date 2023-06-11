@@ -4,21 +4,50 @@ using namespace std;
 class DisjointSet{
 public:
 	using Collection=vector<int>;
-	DisjointSet(istream& is,int N):P(N+1),V
-	{}
+	DisjointSet(istream& is,int N):P(N+1),V{0},M{0}{
+		generate(P.begin(),P.end(),[i=-1]() mutable {return ++i;});
+
+		copy_n(istream_iterator<int>(is),N,back_inserter(V));
+
+		M=*max_element(V.begin(),V.end());
+	}
+	int Union(int a,int b){
+		a=Find(a);
+		b=Find(b);
+		if(a==b){
+			return M;
+		}
+		P[b]=P[a];
+		V[a]+=V[b],V[b]=0;
+
+		if(M<V[a]){
+			M=V[a];
+		}
+		return M;
+	}
+	int Find(int x){
+		if(P[x]==x){
+			return P[x];
+		}
+		return P[x]=Find(P[x]);
+	}
+private:
+	Collection P,V;
+	int M;
 };
 
 int main(){
-	size_t N{0},M{0};{
-		string line;
-getline(cin,line);
-		istringstream parser{line};
-		parser>>N>>M;
+	string line;
+	auto N{0},M{0};{
+		getline(cin,line);
+		istringstream is{line};
+		is>>N>>M;
 	}
-	using Type=unsigned long long;
-	Solution<Type>::Collection A;
-	copy_n(istream_iterator<int>(cin),M,back_inserter(A));
-	auto ans=Solution<Type>().process(A,N);
-	copy(ans.begin(),ans.end(),ostream_iterator<Solution<Type>::Thread>(cout,"\n"));
+	DisjointSet ds{cin,N};
+	for(auto a{0},b{0};M--;){
+		cin>>a>>b;
+		cout<<ds.Union(a,b)<<endl;
+	}
 	return 0;
 }
+
