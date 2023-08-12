@@ -1,6 +1,2 @@
-*.exec
-*.exe
-*.cpp~
-*.swp
-*.un~
-*.cpp.un~
+*
+!*.cpp
