@@ -3,15 +3,16 @@
 
 using namespace std;
 
-int binarySearch(const vector<int>& arr, int target) {
+int binarysearch(const vector<int>& arr, int target) {
     int left = 0;
     int right = arr.size() - 1;
+    int result=-1;
 
     while (left <= right) {
         int mid = left + (right - left) / 2;
-
         if (arr[mid] == target) {
-            return mid;
+            result=mid;
+            right=mid-1;
         } else if (arr[mid] < target) {
             left = mid + 1;
         } else {
@@ -19,27 +20,26 @@ int binarySearch(const vector<int>& arr, int target) {
         }
     }
 
-    return -1; // Element not found
+    return result;
 }
 
 int main() {
-    int n;
+    int n,m;
+
     cin >> n;
-    vector<int> sortedArray(n);
+    vector<int> arr(n);
     for (int i = 0; i < n; ++i) {
-        cin >> sortedArray[i];
+        cin >> arr[i];
     }
 
-    int m;
     cin >> m;
     vector<int> queries(m);
     for (int i = 0; i < m; ++i) {
         cin >> queries[i];
     }
 
-    // Process queries and output results
     for (int i = 0; i < m; ++i) {
-        int queryIndex = binarySearch(sortedArray, queries[i]);
+        int queryIndex = binarysearch(arr, queries[i]);
         cout << queryIndex << " ";
     }
 
