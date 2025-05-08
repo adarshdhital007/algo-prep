@@ -1,19 +1,18 @@
 class Solution {
 public:
     bool isSafe(int i, int j, int n, int m) {
-        return (i >= 0 && i < n && j >= 0 && j < m);
+        return (i < n && i >= 0 && j >=0 && j < m);
     }
-    int orangesRotting(vector<vector<int>>& mat) {
-        int n = mat.size();
-        int m = mat[0].size();
 
-        vector<vector<int>> directions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-
+    int orangesRotting(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
         queue<vector<int>> q;
+        vector<vector<int>> directions = {{1, 0}, {0, 1}, {0, -1}, {-1, 0}};
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (mat[i][j] == 2) {
+                if (grid[i][j] == 2) {
                     q.push({i, j});
                 }
             }
@@ -25,20 +24,19 @@ public:
             elapsedTime++;
 
             int len = q.size();
+
             while (len--) {
                 vector<int> curr = q.front();
                 q.pop();
                 int i = curr[0];
                 int j = curr[1];
 
-                // change 4-directionally connected cells
                 for (auto dir : directions) {
                     int x = i + dir[0];
                     int y = j + dir[1];
 
-                    // if the cell is in the matrix and the orange is fresh
-                    if (isSafe(x, y, n, m) && mat[x][y] == 1) {
-                        mat[x][y] = 2;
+                    if (isSafe(x, y, n, m) && grid[x][y] == 1) {
+                        grid[x][y] = 2;
                         q.push({x, y});
                     }
                 }
@@ -47,10 +45,12 @@ public:
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (mat[i][j] == 1)
-                    return -1;
+                if (grid[i][j] == 1) {
+                  return -1;
+                }
             }
         }
-        return max(0,elapsedTime - 1);
+
+        return max(0, elapsedTime - 1);
     }
 };
