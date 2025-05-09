@@ -3,12 +3,12 @@ public:
     int minOperations(vector<string>& logs) {
         int depth = 0;
 
-        for(string &example:logs){
-            if(example == "../"){
-                depth = max(0,depth -1);
-            }else if(example == "./"){
+        for (string& s : logs) {
+            if (s == "../") {
+                depth = max(0, depth - 1);
+            } else if (s == "./") {
                 continue;
-            }else{
+            } else {
                 depth++;
             }
         }
